@@ -80,4 +80,15 @@ class DeckTest < Minitest::Test
     assert_equal [card4], deck.cards
   end
 
+  def test_it_count_number_of_cards_in_deck
+    deck = Deck.new
+    card1 = Card.new(:spade, 'Queen', 12)
+    card2 = Card.new(:heart, '2', 2)
+
+    deck << card1
+    deck << card2
+
+    assert_equal 2, deck.count
+  end
+
 end
