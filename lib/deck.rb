@@ -31,5 +31,9 @@ class Deck
     @cards.push(card)
   end
 
+  def count
+    @cards.count
+  end
+
 
 end
