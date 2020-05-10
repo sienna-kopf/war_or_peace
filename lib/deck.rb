@@ -35,5 +35,36 @@ class Deck
     @cards.count
   end
 
+  def shuffle
+    @cards.shuffle!
+  end
+
+  def create_52_card_deck
+    suits = [:heart, :diamond, :spade, :club]
+    values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
+    rank_of_card = {'2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9, '10' => 10, 'Jack' => 11, 'Queen' => 12, 'King' => 13, 'Ace' => 14}
+    ## Use cards local varaible instead o fthe instance var
+    new_deck = []
+
+    suits.each do |suit|
+      values.each do |value|
+        # rank = rank_of_card.key(value)
+        rank = rank_of_card[value]
+        new_deck << Card.new(suit, value, rank)
+      end
+    end
+    new_deck
+  end
+
+  def split
+    ## split the deck into two hash key value pairs
+    #build hash to assign to
+    playing_deck = Deck.new.create_52_card_deck.shuffle
+
+    split_deck = {
+      'deck1' => (playing_deck.shift(26)),
+      'deck2' => playing_deck
+    }
+  end
 
 end
