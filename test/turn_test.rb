@@ -293,6 +293,9 @@ class TurnTest < Minitest::Test
     player2 = Player.new("Aurora", deck2)
 
     turn = Turn.new(player1, player2)
+
+    require 'pry'; binding.pry
+
     winner = turn.winner
 
     assert_equal "No Winner", turn.winner
