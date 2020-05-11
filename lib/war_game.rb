@@ -51,9 +51,9 @@ class WarGame
       turn = Turn.new(player1, player2)
       turn_number += 1
       puts "\nTurn #{turn_number}:"
-      require 'pry'; binding.pry
       if turn.type == :basic
         turn.pile_cards
+        puts "WTF CARDS" if turn.winner == "No Winner"
         print "#{turn.winner.name} won #{turn.spoils_of_war.count} cards"
         turn.award_spoils(turn.winner)
       elsif turn.type == :war
@@ -61,7 +61,6 @@ class WarGame
         print "WAR - #{turn.winner.name} won #{turn.spoils_of_war.count} cards"
         turn.award_spoils(turn.winner.name)
       else
-        require 'pry'; binding.pry
         turn.pile_cards
         print "*mutually assured destruction* 6 cards removed from play"
       end
@@ -77,9 +76,7 @@ class WarGame
 
     if turn_number == 1000000
       puts "---- DRAW ----"
-    end 
-
-
+    end
   end
 
 
